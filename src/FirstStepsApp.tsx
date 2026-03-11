@@ -1,14 +1,30 @@
+import { ItemCounter } from "./shopping-cart/ItemCounter";
+
+interface ItemInCart {
+  productName: string,
+  quantity?: number
+}
+
+const itemsInCart: ItemInCart[] = [
+  { productName: 'Nintendo Switch 2', quantity: 2 },
+  { productName: 'Pro Controller', quantity: 1 },
+  { productName: 'Super Smash', quantity: 5 },
+]
+
 export function FirstStepsApp() {
-    return (
-        <>
-            <h1>Hola Mundo!</h1>
-            <p>Hola, Alberto</p>
+  return (
+    <>
+      <h1>Carrito de compras</h1>
 
-            <button>Click me!</button>
+      {/* We can use the map method to display the number of the items in the array, but we need to stablish a unique key
+        Because we are working with a 'shopping cart' productNames wouldn't have to be the same */}
+      {itemsInCart.map(({ productName, quantity }) => (
+        <ItemCounter key={productName} name={productName} quantity={quantity} />
+      ))}
 
-            <div>
-                <h2>Hola desde dentro de un div</h2>
-            </div>
-        </>
-    );
+      {/* <ItemCounter name='Nintendo Switch 2' quantity={1} />
+      <ItemCounter name='Pro controller' quantity={2} />
+      <ItemCounter name='Super Smash' quantity={1} /> */}
+    </>
+  );
 }
