@@ -1,0 +1,17 @@
+/*
+This will affect the TSX syntaxis, because this will be a computed property 
+like styles.['item-row']
+*/
+.item-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+/* 
+Often we'll see camelCase classes names
+*/
+.itemText {
+    width: 150px;
+}
