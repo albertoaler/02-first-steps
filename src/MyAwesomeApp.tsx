@@ -23,7 +23,7 @@ const myStyles: CSSProperties = {
 
 export function MyAwesomeApp() {
   return (
-    <>
+    <div data-testid='my-awesome-app-id'>
       <h1 data-testid='first-name-title'> {firstName} </h1>
       <h3 data-testid='last-name-title'> {lastName} </h3>
 
@@ -46,6 +46,6 @@ export function MyAwesomeApp() {
           */
         }
       >{JSON.stringify(address)}</p>
-    </>
+    </div>
   );
 }

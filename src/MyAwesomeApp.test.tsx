@@ -39,4 +39,21 @@ describe("MyAwesomeApp", () => {
     expect(h1?.innerHTML).toContain('Alberto');
     expect(h3?.innerHTML).toContain('Aleman');
   });
+
+  test('Should match the snapshot - container', () => {
+    const { container } = render(<MyAwesomeApp />)
+
+    // toMatchSnapshot takes a 'copy' of the HTML and compares it, if something's
+    // different, the test fail
+    expect(container).toMatchSnapshot();
+  });
+
+  test('Should match the snapshot - screen', () => {
+    render(<MyAwesomeApp />)
+
+    // It is not reccomended to use data-testid because the app can run
+    // without it, so someone could delete them and the app will still work
+    // but the tests will fail
+    expect(screen.getByTestId('my-awesome-app-id')).toMatchSnapshot();
+  });
 });
