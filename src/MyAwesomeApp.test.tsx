@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react';
 
 import { MyAwesomeApp } from "./MyAwesomeApp";
 
@@ -8,9 +8,9 @@ import { MyAwesomeApp } from "./MyAwesomeApp";
 describe("MyAwesomeApp", () => {
   test("Should render firstName and lastName - container", () => {
     // We use the render function to load the component into the virtual jsdom
-    const { container } = render(<MyAwesomeApp />)
+    const { container } = render(<MyAwesomeApp />);
     // We use the screen function to search and see the dom
-    screen.debug();
+    // screen.debug();
 
     // We can use the container object to search the elements
     // querySelector method will get the first element of the dom
@@ -27,7 +27,7 @@ describe("MyAwesomeApp", () => {
 describe("MyAwesomeApp", () => {
   test("Should render firstName and lastName - screen", () => {
     // We only need to render the component
-    render(<MyAwesomeApp />)
+    render(<MyAwesomeApp />);
 
     // const h1 = screen.getByRole('heading', {
     //   level: 1
@@ -41,7 +41,7 @@ describe("MyAwesomeApp", () => {
   });
 
   test('Should match the snapshot - container', () => {
-    const { container } = render(<MyAwesomeApp />)
+    const { container } = render(<MyAwesomeApp />);
 
     // toMatchSnapshot takes a 'copy' of the HTML and compares it, if something's
     // different, the test fail
@@ -49,11 +49,19 @@ describe("MyAwesomeApp", () => {
   });
 
   test('Should match the snapshot - screen', () => {
-    render(<MyAwesomeApp />)
+    render(<MyAwesomeApp />);
 
     // It is not reccomended to use data-testid because the app can run
     // without it, so someone could delete them and the app will still work
     // but the tests will fail
     expect(screen.getByTestId('my-awesome-app-id')).toMatchSnapshot();
+  });
+
+  test('Should not display No Activo when isActive is true', () => {
+    render(<MyAwesomeApp />);
+
+    const [, , isActiveh1] = screen.getAllByRole('heading');
+
+    expect(isActiveh1.innerHTML).not.toBe('No activo');
   });
 });
