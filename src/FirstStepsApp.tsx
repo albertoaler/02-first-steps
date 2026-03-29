@@ -2,14 +2,14 @@ import { ItemCounter } from "./shopping-cart/ItemCounter";
 
 interface ItemInCart {
   productName: string,
-  quantity?: number
+  quantity?: number;
 }
 
 const itemsInCart: ItemInCart[] = [
   { productName: 'Nintendo Switch 2', quantity: 2 },
   { productName: 'Pro Controller', quantity: 1 },
   { productName: 'Super Smash', quantity: 5 },
-]
+];
 
 export function FirstStepsApp() {
   return (
